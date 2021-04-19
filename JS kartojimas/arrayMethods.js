@@ -68,6 +68,50 @@ myConsole.log('Products with count higher or equal 13', productData.products.fil
 // 3 argumentas - masyvas, per kurį yra iteruojama
 // Grąžinimas: Array, su perduotos funkcijos grąžintais elementais
 
+myConsole.log('productData.products mapped to title array', productData.products.map(p => p.title));
+myConsole.log(
+  'productData.products mapped title and total price object',
+  productData.products.map(function (p) {
+    return {
+      title: p.title,
+      totalPrice: p.price * p.count + p.currencySign
+    }
+  })
+);
+myConsole.log(
+  'Shorthand with Destructurization',
+  productData.products.map(function ({ title, price, count, currencySign }) {
+    return {
+      title,
+      totalPrice: price * count + currencySign
+    }
+  })
+);
+myConsole.log(
+  'Lambda that returns an object',
+  productData.products.map(({ title, price, count, currencySign }) => ({
+    title,
+    totalPrice: price * count + currencySign
+  }))
+);
+
+myConsole.log(
+  'Lambda destructuring id prop and mapping it to new array',
+                    // 1. ↘()   2.↙{} 3.↙()  ↙4.
+  productData.products.map(({ id }) => ({ id }))
+  // 1. () - parametrų sąrašo skliaustai
+  // 2. {} - destrukturizavimo skliaustai naudojami destrukturizuoti pirmajį parametrą
+  // 3. () - grąžinimo skliaustai - naudojami tam, kad {} nebūtų traktuojami kaip funkcijos vykdymo blokas
+  // 4. {} - naujo Objekto kūrimo skliaustai
+);
+
+myConsole.log(
+  'title and id props mapping',
+  productData.products.map(({ title, id }) => ({ title, id }))
+);
+
+
+
 // Array.prototype.reduce - vykdo parametru perduotą funkciją su kiekvienu masyvo elementu ir funkcijos
 // grąžinamą rezultatą deda į kaupiamajį kintamajį
 // Kviečiamai funkcijai perduodami tokie argumentai:
