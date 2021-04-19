@@ -34,19 +34,22 @@ module.exports = {
       currency: 'USD'
     },
   ],
-  neededCurrencies:[
+  neededCurrencies: [
     {
-      currency:'EUR',
-      currencySign:"€",
+      currency: 'EUR',
+      currencySign: "€",
+      eurRatio: 1,
     },
     {
-      currency:'USD',
-      currencySign:"$",
+      currency: 'USD',
+      currencySign: "$",
+      eurRatio: 0.83
     },
     {
-      currency:'GBP',
-      currencySign:"£",
+      currency: 'GBP',
+      currencySign: "£",
+      eurRatio: 1.16
     },
-  ]
+  ],
 };
 
