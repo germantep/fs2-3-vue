@@ -1,4 +1,4 @@
-const data = {
+module.exports = {
   tax: 21,
   products: [
     {
@@ -48,4 +48,5 @@ const data = {
       currencySign:"£",
     },
   ]
-}
+};
+
