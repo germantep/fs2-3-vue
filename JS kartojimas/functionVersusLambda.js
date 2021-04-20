@@ -164,9 +164,23 @@ class Master {
   }
 }
 
+// 1.
 const master = new Master(100);
-const slave = new Slave('Pecker');
-master.orderSlaveToMineRocks(slave);
+// 2.
+const slaves = [
+  new Slave('Pecker'),
+  new Slave('Wobler'),
+  new Slave('Mackler')
+];
+// 3. Beveik
+let slaveToOrder = 0;
+while (master.pickaxeDurability > 0) {
+  master.orderSlaveToMineRocks(slaves[slaveToOrder]);
+  slaveToOrder = ++slaveToOrder % slaves.length;
+}
+// Skaičiavimą turėtų atlikti vergas
+(({ rocks, wagon }) => console.log({ rocks, wagon }))(master);
+
 
 
 
