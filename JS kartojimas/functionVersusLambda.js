@@ -41,6 +41,8 @@ myConsole.log('Lambda išraiškos automatinis grąžinimas rašant vieną komand
 class Teacher {
   constructor(subjects) {
     this.subjects = subjects;
+    // Norint funkcijai priskirti nuorodą <this>, pririšame ją prie funkcijos
+    this.printSubjects = this.printSubjects.bind(this);
   }
 
   printSubjects() {
@@ -81,6 +83,50 @@ const mathTeacher = new Teacher(['Algebra', 'Trygonometry', 'Statistics']);
 const student = new Student('Germantas', 'Pauliukaitis');
 mathTeacher.tellStudentToSaySubjects(student);
 mathTeacher.tellStudentToSaySubjectsLambda(student);
+
+/*
+ Sukurkite Master and Slave klases
+  Master:
+    savybės
+      pickaxeDurability: Number
+      wagon: []
+      rocks: []  // Akmenų svoriai
+    metodai:
+      countRocks() - suskaičiuoja Master objekto akmenis savybėse <wagon> ir <rocks> ir atspausdina į konsolę
+      orderSlaveToCountRocks(slave) - perduoda <countRocks> funkciją parametru gautam vergui <slave>
+
+      bringRocks() - įdeda į Master objekto savybės <wagon> akmenį iš Master objekto savybės <rocks>
+      orderSlaveToBringRocks(slave) - perduoda <bringRocks> funkciją parametru gautam vergui <slave>
+
+      mineRocks() - į Master objekto savybę <rocks> įdeda akmenį nuo 1 iki 10 svorio, ir priklausomai
+        nuo akmens svorio sumažina Master objekto savybę <pickaxeDurability> tokiu dydžiu, kokį akmenį pavyko
+        iškasti. Jeigu Master objekto savybė <pickaxeDurability> yra 0 arba mažiau, atspausdina 
+        į konsolę, jog sulūžo kirtiklis ir atspausdina Master objekto savybę <pickaxeDurability>;
+      orderSlaveToMineRocks(slave) - perduoda <mineRocks> funkciją parametru gautam vergui <slave>
+
+    Slave:
+      savybės: 
+        name - vergo pseudonimas
+      metodai:
+        obey(callback) - bando vykdyti parametru perduotą funkciją
+
+    Atlike užduotis:
+      1. Sukurti Master objektą
+
+      2. Sukurti masyvą sudarytą iš Slave objektų, kuriems bus nurodyta darbus vykdyti paeiliui, pvz.: 
+        Jeigu yra 2 vergai, tai jie atlieka Master objekto komandą kas antrą kartą.
+        Jeigu yra 3 vergai, tai jie atlieka Master objekto komandą kas trečią kartą.
+
+      // Alogritmas
+      3. Kasti akmenis tol, kol Master objekto savybė <pickaxeDurability> yra didesnė nei 0.
+      tuomet...
+      4. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
+
+      5. Kuomet Master objekto savybė <pickaxeDurability> yra 0 arba mažiau, tuomet dėti akmenis į Master
+      objekto savybę wagon, naudojant Master objekto metodą <orderSlaveToBringRocks>
+
+      6. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
+*/
 
 
 
