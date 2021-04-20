@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   log: (headerText, varOrFunction, ...args) => {
-    const header = '--------- ' + headerText + ' ---------';
+    const header = '--- ' + headerText + ' ---';
     console.group(header);
     if (varOrFunction instanceof Function) {
       const returnValue = varOrFunction(...args);
