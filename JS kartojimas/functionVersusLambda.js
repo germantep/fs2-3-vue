@@ -121,13 +121,52 @@ mathTeacher.tellStudentToSaySubjectsLambda(student);
     // Alogritmas
     3. Kasti akmenis tol, kol Master objekto savybė <pickaxeDurability> yra didesnė nei 0.
     tuomet...
-    4. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
+    4. Naudojant Master objektą, liepti vergui suskaičiuot akmenis 
+      wagon - 0
+      rocks - 102
 
     5. Kuomet Master objekto savybė <pickaxeDurability> yra 0 arba mažiau, tuomet dėti akmenis į Master
     objekto savybę wagon, naudojant Master objekto metodą <orderSlaveToBringRocks>
 
     6. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
+      wagon - 102
+      rock - 0
 */
+class Slave {
+  constructor(name) {
+    this.name = name;
+  }
+  obey(callback) {
+    try {
+      console.log(`I am ${this.name}, I try to ${callback.name}!`)
+      callback()
+    } catch (ex) {
+      console.log('Sorry, I don\'t have Master object context to do that.')
+    }
+  }
+}
+
+class Master {
+  constructor(pickaxeDurability) {
+    this.pickaxeDurability = pickaxeDurability;
+    this.rocks = [];
+    this.wagon = [];
+  }
+
+  mineRocks = () => {
+    const rockSize = Math.floor(Math.random() * 10) + 1;
+    this.rocks.push(rockSize);
+    this.pickaxeDurability -= rockSize;
+  }
+
+  orderSlaveToMineRocks(slave) {
+    slave.obey(this.mineRocks);
+  }
+}
+
+const master = new Master(100);
+const slave = new Slave('Pecker');
+master.orderSlaveToMineRocks(slave);
 
 
 
