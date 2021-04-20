@@ -104,28 +104,29 @@ mathTeacher.tellStudentToSaySubjectsLambda(student);
         į konsolę, jog sulūžo kirtiklis ir atspausdina Master objekto savybę <pickaxeDurability>;
       orderSlaveToMineRocks(slave) - perduoda <mineRocks> funkciją parametru gautam vergui <slave>
 
-    Slave:
-      savybės: 
-        name - vergo pseudonimas
-      metodai:
-        obey(callback) - bando vykdyti parametru perduotą funkciją
+  Slave:
+    savybės: 
+      name - vergo pseudonimas
+    metodai:
+      obey(callback) - bando vykdyti parametru perduotą funkciją. Atliekant darbą, atspausdinti konsolėje,
+        savo savybę <name> ir darbą, kuris yra atliekamas (Vienoje eilutėje).
 
-    Atlike užduotis:
-      1. Sukurti Master objektą
+  Atlike užduotis:
+    1. Sukurti Master objektą
 
-      2. Sukurti masyvą sudarytą iš Slave objektų, kuriems bus nurodyta darbus vykdyti paeiliui, pvz.: 
-        Jeigu yra 2 vergai, tai jie atlieka Master objekto komandą kas antrą kartą.
-        Jeigu yra 3 vergai, tai jie atlieka Master objekto komandą kas trečią kartą.
+    2. Sukurti masyvą sudarytą iš Slave objektų, kuriems bus nurodyta darbus vykdyti paeiliui, pvz.: 
+      Jeigu yra 2 vergai, tai jie atlieka Master objekto komandą kas antrą kartą.
+      Jeigu yra 3 vergai, tai jie atlieka Master objekto komandą kas trečią kartą.
 
-      // Alogritmas
-      3. Kasti akmenis tol, kol Master objekto savybė <pickaxeDurability> yra didesnė nei 0.
-      tuomet...
-      4. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
+    // Alogritmas
+    3. Kasti akmenis tol, kol Master objekto savybė <pickaxeDurability> yra didesnė nei 0.
+    tuomet...
+    4. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
 
-      5. Kuomet Master objekto savybė <pickaxeDurability> yra 0 arba mažiau, tuomet dėti akmenis į Master
-      objekto savybę wagon, naudojant Master objekto metodą <orderSlaveToBringRocks>
+    5. Kuomet Master objekto savybė <pickaxeDurability> yra 0 arba mažiau, tuomet dėti akmenis į Master
+    objekto savybę wagon, naudojant Master objekto metodą <orderSlaveToBringRocks>
 
-      6. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
+    6. Naudojant Master objektą, liepti vergui suskaičiuot akmenis
 */
 
 
