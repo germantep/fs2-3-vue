@@ -201,9 +201,11 @@ const master = new Master(40);
 
 // 2.
 const slaves = [
-  new Slave('Pecker'),
-  new Slave('Wobler'),
-  new Slave('Mackler')
+  new Slave('Pecker'), 
+  new Slave('Wobler'), 
+  new Slave('Gunar'), 
+  new Slave('Lessy'), 
+  new Slave('Monte'), 
 ];
 // 3. 
 let slaveToOrderIndex = 0;
