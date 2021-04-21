@@ -1,7 +1,10 @@
-1. Write two binary functions, add and mul, that take two numbers and return their sum and product. 
+0. Write two binary functions, add and mul, that take two numbers and return their sum and product. 
 add(3, 4);    //  7  
 mul(3, 4);    // 12  
-Write a function that takes an argument and returns a function that returns that argument.  
+
+------------------------------------------------------------------------------------------------
+
+1. Write a function that takes an argument and returns a function that returns that argument.  
 const idf = identityf (3);  
 idf ();                  // 3  
 
