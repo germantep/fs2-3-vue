@@ -136,7 +136,12 @@ class Slave {
   constructor(name) {
     this.name = name;
   }
+
   obey(callback) {
+    if (typeof callback !== 'function') {
+      console.err('parameter callback is not a function')
+      return;
+    }
     try {
       console.log(`I am ${this.name}, I try to ${callback.name}!`)
       callback()
@@ -153,6 +158,24 @@ class Master {
     this.wagon = [];
   }
 
+  countRocks = () => {
+    const rockCount = this.rocks.length;
+    const rockCountInWagon = this.wagon.length;
+    const rockMass = this.rocks.reduce((sum, mass) => sum + mass, 0);
+    const rockMassInWagon = this.wagon.reduce((sum, mass) => sum + mass, 0);
+    console.log({
+      rockCount,
+      rockCountInWagon,
+      rockMass,
+      rockMassInWagon,
+    });
+  }
+
+  orderSlaveToCountRocks(slave) {
+    slave.obey(this.countRocks);
+  }
+  // Objekto kūrimo metu (prieš constructor funkciją) objektui yra priskiriami metodai.
+  // Nuoroda <this> rodys į objektą, kuriam pirmiausiai buvo priskirta lambda išraiška.
   mineRocks = () => {
     const rockSize = Math.floor(Math.random() * 10) + 1;
     this.rocks.push(rockSize);
@@ -166,23 +189,20 @@ class Master {
 
 // 1.
 const master = new Master(100);
+
 // 2.
 const slaves = [
   new Slave('Pecker'),
   new Slave('Wobler'),
   new Slave('Mackler')
 ];
-// 3. Beveik
-let slaveToOrder = 0;
+// 3. 
+let slaveToOrderIndex = 0;
 while (master.pickaxeDurability > 0) {
-  master.orderSlaveToMineRocks(slaves[slaveToOrder]);
-  slaveToOrder = ++slaveToOrder % slaves.length;
+  master.orderSlaveToMineRocks(slaves[slaveToOrderIndex]);
+  slaveToOrderIndex = ++slaveToOrderIndex % slaves.length;
 }
-// Skaičiavimą turėtų atlikti vergas
-(({ rocks, wagon }) => console.log({ rocks, wagon }))(master);
-
-
-
-
-
+// 4.
+master.orderSlaveToCountRocks(slaves[slaveToOrderIndex]);
+slaveToOrderIndex = ++slaveToOrderIndex % slaves.length;
 
