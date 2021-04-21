@@ -95,8 +95,8 @@ mathTeacher.tellStudentToSaySubjectsLambda(student);
       countRocks() - suskaičiuoja Master objekto akmenis savybėse <wagon> ir <rocks> ir atspausdina į konsolę
       orderSlaveToCountRocks(slave) - perduoda <countRocks> funkciją parametru gautam vergui <slave>
 
-      bringRocks() - įdeda į Master objekto savybės <wagon> akmenį iš Master objekto savybės <rocks>
-      orderSlaveToBringRocks(slave) - perduoda <bringRocks> funkciją parametru gautam vergui <slave>
+      putRockIntoWagon() - įdeda į Master objekto savybės <wagon> akmenį iš Master objekto savybės <rocks>
+      orderSlaveToPutRockIntoWagon(slave) - perduoda <bringRocks> funkciją parametru gautam vergui <slave>
 
       mineRocks() - į Master objekto savybę <rocks> įdeda akmenį nuo 1 iki 10 svorio, ir priklausomai
         nuo akmens svorio sumažina Master objekto savybę <pickaxeDurability> tokiu dydžiu, kokį akmenį pavyko
@@ -185,6 +185,11 @@ class Master {
   orderSlaveToMineRocks(slave) {
     slave.obey(this.mineRocks);
   }
+
+  // ...
+
+  // ...
+
 }
 
 // 1.
@@ -205,4 +210,9 @@ while (master.pickaxeDurability > 0) {
 // 4.
 master.orderSlaveToCountRocks(slaves[slaveToOrderIndex]);
 slaveToOrderIndex = ++slaveToOrderIndex % slaves.length;
+// 5.
+while (master.rocks.length > 0) {
+  master.orderSlaveToPutRockIntoWagon(slaves[slaveToOrderIndex]);
+  slaveToOrderIndex = ++slaveToOrderIndex % slaves.length;
+}
 
