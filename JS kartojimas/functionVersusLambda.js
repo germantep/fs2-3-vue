@@ -186,14 +186,18 @@ class Master {
     slave.obey(this.mineRocks);
   }
 
-  // ...
+  putRockIntoWagon = () => {
+    this.wagon.push(this.rocks.shift());
+  }
 
-  // ...
+  orderSlaveToPutRockIntoWagon(slave) {
+    slave.obey(this.putRockIntoWagon);
+  }
 
 }
 
 // 1.
-const master = new Master(100);
+const master = new Master(40);
 
 // 2.
 const slaves = [
@@ -215,4 +219,5 @@ while (master.rocks.length > 0) {
   master.orderSlaveToPutRockIntoWagon(slaves[slaveToOrderIndex]);
   slaveToOrderIndex = ++slaveToOrderIndex % slaves.length;
 }
-
+// 6.
+master.orderSlaveToCountRocks(slaves[slaveToOrderIndex]);
